@@ -3,7 +3,7 @@
 
 // Arduino pins that the input functions from the RX chip are connected to.
 #define RC_INPUT_RIGHT    5
-#define RC_INPUT_LEFT     6
+#define RC_INPUT_LEFT     2
 
 // Duration between presses (in ms) to count as 
 // an "action" - in my case, "fire infrared" 
@@ -31,9 +31,11 @@ void setup() {
  */
 void actionPerformed( const int pinIndex ) {
   
+  const char* label = labels[ pinIndex ];
+  
   // For now, just log this to the serial port for debugging...
-  Serial.print( "Received action from Right pin" );
-  Serial.println( *labels[ pinIndex ] );
+  Serial.print( "Received action from " );
+  Serial.println( label );
   
   // TODO: Hook up IR LED and "fire" it when an action is performed.
 
